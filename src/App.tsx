@@ -79,6 +79,7 @@ const App: FC = () => {
     if (playerChoice !== PlayerChoiceOptions.DEFAULT) {
       resultsHandler();
     }
+    // eslint-disable-next-line
   }, [playerChoice]);
 
   return (
