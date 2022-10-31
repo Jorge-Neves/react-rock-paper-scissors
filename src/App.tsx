@@ -1,17 +1,23 @@
 import React, { FC, useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const App: FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
+      <div>
         <div>
-          <button></button>
-          <button></button>
-          <button></button>
+          <span>&#129307;</span>
+          <button>Rock</button>
         </div>
-      </header>
+        <div>
+          <span>&#x1F91A;</span>
+          <button>Paper</button>
+        </div>
+        <div>
+          <span>&#9996;</span>
+          <button>Scissors</button>
+        </div>
+      </div>
     </div>
   );
 };
