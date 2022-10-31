@@ -12,6 +12,14 @@ const App: FC = () => {
   const [playerChoice, setPlayerChoice] = useState<string>(
     PlayerChoiceOptions.DEFAULT
   );
+
+  const [shouldDisplayResultScreen, setShouldDisplayResultScreen] =
+    useState<boolean>(true);
+
+  useEffect(() => {
+    if (playerChoice !== PlayerChoiceOptions.DEFAULT) return;
+  }, [playerChoice]);
+
   return (
     <>
       <div className="App">
@@ -30,6 +38,11 @@ const App: FC = () => {
           </div>
         </div>
       </div>
+      {shouldDisplayResultScreen && (
+        <>
+          <div className="result-screen-background"></div>
+        </>
+      )}
     </>
   );
 };
