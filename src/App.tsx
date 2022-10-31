@@ -8,10 +8,18 @@ enum PlayerChoiceOptions {
   SCISSORTS = 'scissorts',
 }
 
+enum WinnerOptions {
+  DEFAULT = 'default',
+  COMPUTER = 'computer',
+  PLAYER = 'player',
+}
+
 const App: FC = () => {
   const [playerChoice, setPlayerChoice] = useState<string>(
     PlayerChoiceOptions.DEFAULT
   );
+
+  const [winner, setWinner] = useState<string>(WinnerOptions.DEFAULT);
 
   const [shouldDisplayResultScreen, setShouldDisplayResultScreen] =
     useState<boolean>(true);
@@ -46,8 +54,18 @@ const App: FC = () => {
         <>
           <div className="result-screen-background">
             <div className="result-screen">
-              <button onClick={() => closeResultScreenHandler()}>X</button>
-              Results
+              <div className="close-button-container">
+                <button
+                  className="close-button"
+                  onClick={() => closeResultScreenHandler()}
+                >
+                  X
+                </button>
+              </div>
+              <div>
+                <p>Results</p>
+                <p>{winner}</p>
+              </div>
             </div>
           </div>
         </>
