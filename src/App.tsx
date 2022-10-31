@@ -1,7 +1,17 @@
 import React, { FC, useState, useEffect } from 'react';
 import './App.css';
 
+enum PlayerChoiceOptions {
+  DEFAULT = 'default',
+  ROCK = 'rock',
+  PAPER = 'paper',
+  SCISSORTS = 'scissorts',
+}
+
 const App: FC = () => {
+  const [playerChoice, setPlayerChoice] = useState<string>(
+    PlayerChoiceOptions.DEFAULT
+  );
   return (
     <>
       <div className="App">
