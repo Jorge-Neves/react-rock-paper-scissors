@@ -5,13 +5,14 @@ enum PlayerChoiceOptions {
   DEFAULT = 'default',
   ROCK = 'rock',
   PAPER = 'paper',
-  SCISSORTS = 'scissorts',
+  SCISSORS = 'scissorts',
 }
 
 enum WinnerOptions {
   DEFAULT = 'default',
   COMPUTER = 'computer',
   PLAYER = 'player',
+  DRAW = 'draw',
 }
 
 const App: FC = () => {
@@ -22,14 +23,61 @@ const App: FC = () => {
   const [winner, setWinner] = useState<string>(WinnerOptions.DEFAULT);
 
   const [shouldDisplayResultScreen, setShouldDisplayResultScreen] =
-    useState<boolean>(true);
+    useState<boolean>(false);
+
+  const playerChoiceHandler = (choice: PlayerChoiceOptions) => {
+    setPlayerChoice(choice);
+  };
 
   const closeResultScreenHandler = () => {
     setShouldDisplayResultScreen(false);
   };
 
+  const resultsHandler = () => {
+    const computerOptions = [
+      PlayerChoiceOptions.ROCK,
+      PlayerChoiceOptions.PAPER,
+      PlayerChoiceOptions.SCISSORS,
+    ];
+
+    const ComputerNumber = Math.floor(Math.random() * 2);
+
+    const ComputerChoice = computerOptions[ComputerNumber];
+
+    if (playerChoice === ComputerChoice) {
+      setWinner(WinnerOptions.DRAW);
+      setShouldDisplayResultScreen(true);
+    }
+
+    if (
+      (playerChoice === PlayerChoiceOptions.ROCK &&
+        ComputerChoice === PlayerChoiceOptions.SCISSORS) ||
+      (playerChoice === PlayerChoiceOptions.PAPER &&
+        ComputerChoice === PlayerChoiceOptions.ROCK) ||
+      (playerChoice === PlayerChoiceOptions.SCISSORS &&
+        ComputerChoice === PlayerChoiceOptions.PAPER)
+    ) {
+      setWinner(WinnerOptions.PLAYER);
+      setShouldDisplayResultScreen(true);
+    }
+
+    if (
+      (ComputerChoice === PlayerChoiceOptions.ROCK &&
+        playerChoice === PlayerChoiceOptions.SCISSORS) ||
+      (ComputerChoice === PlayerChoiceOptions.PAPER &&
+        playerChoice === PlayerChoiceOptions.ROCK) ||
+      (ComputerChoice === PlayerChoiceOptions.SCISSORS &&
+        playerChoice === PlayerChoiceOptions.PAPER)
+    ) {
+      setWinner(WinnerOptions.COMPUTER);
+      setShouldDisplayResultScreen(true);
+    }
+  };
+
   useEffect(() => {
-    if (playerChoice !== PlayerChoiceOptions.DEFAULT) return;
+    if (playerChoice !== PlayerChoiceOptions.DEFAULT) {
+      resultsHandler();
+    }
   }, [playerChoice]);
 
   return (
@@ -38,15 +86,30 @@ const App: FC = () => {
         <div className="screen">
           <div className="control">
             <span className="icon">&#129307;</span>
-            <button className="button">Rock</button>
+            <button
+              onClick={() => playerChoiceHandler(PlayerChoiceOptions.ROCK)}
+              className="button"
+            >
+              Rock
+            </button>
           </div>
           <div className="control">
             <span className="icon">&#x1F91A;</span>
-            <button className="button">Paper</button>
+            <button
+              onClick={() => playerChoiceHandler(PlayerChoiceOptions.PAPER)}
+              className="button"
+            >
+              Paper
+            </button>
           </div>
           <div className="control">
             <span className="icon">&#9996;</span>
-            <button className="button">Scissors</button>
+            <button
+              onClick={() => playerChoiceHandler(PlayerChoiceOptions.SCISSORS)}
+              className="button"
+            >
+              Scissors
+            </button>
           </div>
         </div>
       </div>
