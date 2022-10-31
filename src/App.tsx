@@ -72,6 +72,7 @@ const App: FC = () => {
       setWinner(WinnerOptions.COMPUTER);
       setShouldDisplayResultScreen(true);
     }
+    setPlayerChoice(PlayerChoiceOptions.DEFAULT);
   };
 
   useEffect(() => {
