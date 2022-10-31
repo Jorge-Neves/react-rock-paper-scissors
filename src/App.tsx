@@ -16,6 +16,10 @@ const App: FC = () => {
   const [shouldDisplayResultScreen, setShouldDisplayResultScreen] =
     useState<boolean>(true);
 
+  const closeResultScreenHandler = () => {
+    setShouldDisplayResultScreen(false);
+  };
+
   useEffect(() => {
     if (playerChoice !== PlayerChoiceOptions.DEFAULT) return;
   }, [playerChoice]);
@@ -41,7 +45,10 @@ const App: FC = () => {
       {shouldDisplayResultScreen && (
         <>
           <div className="result-screen-background">
-            <div className="result-screen">Results</div>
+            <div className="result-screen">
+              <button onClick={() => closeResultScreenHandler()}>X</button>
+              Results
+            </div>
           </div>
         </>
       )}
