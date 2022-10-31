@@ -128,7 +128,20 @@ const App: FC = () => {
               </div>
               <div>
                 <p>Results</p>
-                <p>{winner}</p>
+                <div className="result-container">
+                  <span>
+                    {winner === WinnerOptions.PLAYER && (
+                      <span className="icon"> &#128100;</span>
+                    )}
+                    {winner === WinnerOptions.COMPUTER && (
+                      <span className="icon">&#128187;</span>
+                    )}
+                    {winner === WinnerOptions.DRAW && (
+                      <span className="icon">&#127937;</span>
+                    )}
+                  </span>
+                  <span>{winner}</span>
+                </div>
               </div>
             </div>
           </div>
