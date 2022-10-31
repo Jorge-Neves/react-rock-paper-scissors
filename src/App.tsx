@@ -40,7 +40,9 @@ const App: FC = () => {
       </div>
       {shouldDisplayResultScreen && (
         <>
-          <div className="result-screen-background"></div>
+          <div className="result-screen-background">
+            <div className="result-screen">Results</div>
+          </div>
         </>
       )}
     </>

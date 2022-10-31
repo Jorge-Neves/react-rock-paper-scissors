@@ -60,3 +60,50 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+.result-screen {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  min-height: 40vh;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5%;
+}
+
+@media screen and (max-width: 750px) {
+  .screen {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    width: auto;
+    height: 50vh;
+    background-color: #ff1b65;
+  }
+
+  .result-screen {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 40vh;
+    background-color: white;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 5%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    width: auto;
+    height: 50vh;
+    background-color: #ff1b65;
+  }
+}
